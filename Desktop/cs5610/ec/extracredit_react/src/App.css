@@ -1,0 +1,67 @@
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-family:'Times New Roman', Times, serif;
+                font-style: italic;
+                font-size: large;
+                background-color: bisque;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: auto 1fr auto;
+                height: 100vh;
+            }
+
+            header, footer, main, aside {
+                border: 2px solid navy;
+                padding: 10px;
+            }
+
+            header, footer {
+                grid-column: span 6;
+                text-align: center;
+                height: 100px;
+            }
+
+            main {
+                grid-column: span 4;
+                grid-row: span 4;
+                background-color: violet;
+            }
+
+            h1 {
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+
+            .box-container {
+                position: relative;
+            }
+
+            .box {
+                width: 60px;
+                height: 60px;
+                background-color: aquamarine;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .box:hover {
+                width: 120px;
+                height: 120px;
+                background-color: firebrick;
+            }
+        
+    
