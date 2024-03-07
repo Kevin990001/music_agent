@@ -1,0 +1,23 @@
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 10px;
+}
+
+.grid h2 {
+  margin-bottom: 20px;
+}
+
+
+  
+
+  
