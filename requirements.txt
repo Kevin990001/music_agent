@@ -1,5 +1,4 @@
 anthropic
 sounddevice
 numpy
-scipy
 shazamio

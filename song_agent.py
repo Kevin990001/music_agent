@@ -11,9 +11,10 @@ import os
 import tempfile
 import time
 
+import wave
+
 import anthropic
 import numpy as np
-import scipy.io.wavfile as wavfile
 import sounddevice as sd
 from shazamio import Shazam
 
@@ -85,8 +86,12 @@ def record_audio(duration_seconds: float = DEFAULT_DURATION) -> dict:
     print("✅  Recording finished!\n")
 
     tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
-    wavfile.write(tmp.name, SAMPLE_RATE, audio)
     tmp.close()
+    with wave.open(tmp.name, "wb") as wf:
+        wf.setnchannels(CHANNELS)
+        wf.setsampwidth(2)  # int16 = 2 bytes
+        wf.setframerate(SAMPLE_RATE)
+        wf.writeframes(audio.tobytes())
 
     return {"file_path": tmp.name, "duration_seconds": duration_seconds}
 
