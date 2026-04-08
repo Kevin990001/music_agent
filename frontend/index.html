@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎵 Song Identifier</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <main class="container">
+    <header>
+      <div class="logo">🎵</div>
+      <h1>Song Identifier</h1>
+      <p class="subtitle">Sing, hum, or whistle — we'll find the song</p>
+    </header>
+
+    <!-- Record button -->
+    <section class="record-section">
+      <button id="record-btn" class="record-btn" aria-label="Start recording">
+        <span class="mic-icon">🎤</span>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring delay"></div>
+      </button>
+      <p id="status-text" class="status idle">Press to start</p>
+    </section>
+
+    <!-- Waveform canvas -->
+    <canvas id="waveform" width="500" height="80" aria-hidden="true"></canvas>
+
+    <!-- Countdown overlay -->
+    <div id="countdown-overlay" class="countdown-overlay hidden">
+      <span id="countdown-number"></span>
+    </div>
+
+    <!-- Result card -->
+    <div id="result-card" class="result-card hidden">
+      <img id="cover-art" class="cover-art" src="" alt="Album cover" />
+      <div class="song-info">
+        <h2 id="song-title" class="song-title">—</h2>
+        <p id="song-artist" class="song-artist">—</p>
+        <div class="song-meta">
+          <span class="meta-tag" id="song-album-tag">
+            <span class="meta-icon">💿</span>
+            <span id="song-album">—</span>
+          </span>
+          <span class="meta-tag" id="song-genre-tag">
+            <span class="meta-icon">🎸</span>
+            <span id="song-genre">—</span>
+          </span>
+        </div>
+        <a id="shazam-link" class="shazam-link hidden" href="#" target="_blank" rel="noopener">
+          Open in Shazam ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Try again button -->
+    <button id="try-again-btn" class="try-again-btn hidden">Try another song</button>
+
+    <!-- Settings -->
+    <details class="settings">
+      <summary>⚙️ Backend settings</summary>
+      <div class="settings-body">
+        <label for="backend-url">Backend API URL</label>
+        <input
+          id="backend-url"
+          type="url"
+          placeholder="http://localhost:8000"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <p class="settings-hint">
+          Deploy the <code>backend/main.py</code> FastAPI server and paste its URL here.
+          The value is saved in your browser.
+        </p>
+      </div>
+    </details>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
